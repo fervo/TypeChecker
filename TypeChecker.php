@@ -34,6 +34,13 @@ class TypeChecker
         return self::checkTypeData($typeData, $value);
     }
 
+    public static function assertType(string $type, $value)
+    {
+        if (!self::checkType($type, $value)) {
+            throw new \InvalidArgumentException("Expected a value of type \"".$type."\"");
+        }
+    }
+
     private static function checkTypeData(array $typeData, $value): bool
     {
         switch ($typeData['name']) {
